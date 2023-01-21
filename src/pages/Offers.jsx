@@ -25,7 +25,7 @@ const Offers = () => {
         // Create a query
         const q = query(
           listingRef,
-          where("offer", "==", true),
+          where("scholarship", "==", true),
           orderBy("timestamp", "desc"),
           limit(10)
         );
@@ -56,7 +56,7 @@ const Offers = () => {
   return (
     <div className="category">
       <header>
-        <p className="pageHeader">Offers</p>
+        <p className="pageHeader">Scholarship</p>
       </header>
 
       {loading ? (

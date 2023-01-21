@@ -147,7 +147,7 @@ const Profile = () => {
               />
             </form>
           </div>
-
+          
           <Link to="/create-listing" className="createListing">
             <img src={homeIcon} alt="home-icon" />
             <p>Sell or rent your home</p>

@@ -5,6 +5,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import OAuth from "../components/OAuth";
+import photo from '../assets/jpg/photo.jpg'
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -46,12 +47,15 @@ const SignIn = () => {
 
   return (
     <>
-      <div className="pageContainer">
+   
+    <img src={photo} alt="img" className="bgin" />
+    <div className="mx-24">
         <header>
           <p className="pageHeader">Welcome Back!</p>
         </header>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}
+        className='frm' >
           <input
             type="email"
             className="emailInput"

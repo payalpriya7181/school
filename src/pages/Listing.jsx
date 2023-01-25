@@ -84,6 +84,13 @@ const Listing = () => {
         <p className="listingType">
           Upto {listing.scholarship && listing.discount} Scholarship
         </p>
+        {listing.brochure && <button type="button">
+          <a href={listing.brochure} download={listing.brochure}>
+            School Brochure
+          </a>
+          Download
+        </button>}
+        
         {listing.offer && (
           <p className="discountPrice">
             {listing.busService
@@ -106,6 +113,12 @@ const Listing = () => {
           <li>{listing.parking && "Parking Spot"}</li>
           <li>{listing.furnished && "Furnished"}</li> */}
           <li>Features Section</li>
+          
+          {params.categoryName === "secondary"
+            ?  "Classes 1 to 10 " 
+            : "Classes 1 to 5"
+            }
+            <li>Per Classes 75 seats Available</li>
         </ul>
 
         <p className="listingLocationTitle">Location</p>

@@ -5,13 +5,20 @@ import Slider from "../components/Slider";
 
 const Explore = () => {
   return (
+    <div>
+      <img
+              src={rentCategoryImage}
+              alt="rent"
+              className="exploreCategory" 
+            />
+     <button type="submit">Login</button>
     <div className="explore">
       <header>
         <p className="pageHeader">Explore</p>
       </header>
 
       <main>
-        <Slider />
+        {/* <Slider /> */}
 
         <p className="exploreCategoryHeading">Categories</p>
 
@@ -34,6 +41,7 @@ const Explore = () => {
           </Link>
         </div>
       </main>
+    </div>
     </div>
   );
 };

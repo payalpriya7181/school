@@ -149,8 +149,8 @@ const Profile = () => {
           </div>
           
           <Link to="/create-listing" className="createListing">
-            <img src={homeIcon} alt="home-icon" />
-            <p>Sell or rent your home</p>
+            {/* <img src={homeIcon} alt="home-icon" /> */}
+            <p>School List Create</p>
             <img src={arrowRight} alt="arrow-right" />
           </Link>
           {!loading && listings.length > 0 && (

@@ -20,10 +20,10 @@ const ListingItem = ({ listing, id, onDelete, onEdit }) => {
             className="categoryListingImg"
           />
           <div className="categoryListingDetails">
-            <p className="categoryListingLocation">{listing.location}</p>
+            <p className="categoryListingLocation">{listing.address}</p>
             <p className="categoryListingName">{listing.name}</p>
             <p className="categoryListingPrice">
-              Upto {listing.scholarship && `${listing.discount} Scholarship`}
+              Upto {listing.scholarship && `${listing.discount}% Scholarship`}
               {/* {listing.scholarship
                 ? listing.discountedPrice
                     .toString()

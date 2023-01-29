@@ -34,7 +34,7 @@ const Contact = () => {
   return (
     <div className="pageContainer">
       <header>
-        <p className="pageHeader">Contact Landlord</p>
+        <p className="pageHeader">Contact School</p>
       </header>
 
       {landlord !== null && (

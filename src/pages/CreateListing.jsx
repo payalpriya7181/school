@@ -18,16 +18,24 @@ const CreateListing = () => {
   const [geolocationEnabled, setGeolocationEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
-    type: "rent",
+    type: "primary",
     name: "",
-    bedrooms: 1,
-    bathrooms: 1,
-    parking: false,
-    furnished: false,
+    // bedrooms: 1,
+    // bathrooms: 1,
+    busService: false,
+    cctv: false,
+    labs: true,
+    canteen: true,
+    sportsFacilities: true,
+    // parking: false,
+    // furnished: false,
     address: "",
-    offer: false,
-    regularPrice: 0,
-    discountedPrice: 0,
+    contact: "",
+    scholarship: false,
+    discount: "",
+    brochure: "",
+    // regularPrice: 0,
+    // discountedPrice: 0,
     images: {},
     latitude: 0,
     longitude: 0,
@@ -36,14 +44,21 @@ const CreateListing = () => {
   const {
     type,
     name,
-    bedrooms,
-    bathrooms,
-    parking,
-    furnished,
+    contact,
+    // bedrooms,
+    // bathrooms,
+    // parking,
+    busService,
+    cctv,
+    labs,
+    canteen,
+    sportsFacilities,
     address,
-    offer,
-    regularPrice,
-    discountedPrice,
+    scholarship,
+    brochure,
+    // regularPrice,
+    // discountedPrice,
+    discount,
     images,
     latitude,
     longitude,
@@ -79,11 +94,11 @@ const CreateListing = () => {
     e.preventDefault();
 
     setLoading(true);
-    if (discountedPrice >= regularPrice) {
-      setLoading(false);
-      toast.error("Discounted price needs to be less than regular price");
-      return;
-    }
+    // if (discountedPrice >= regularPrice) {
+    //   setLoading(false);
+    //   toast.error("Discounted price needs to be less than regular price");
+    //   return;
+    // }
 
     if (images.length > 6) {
       setLoading(false);
@@ -159,10 +174,12 @@ const CreateListing = () => {
       timestamp: serverTimestamp(),
     };
 
-    formDataCopy.location = address;
+    // formDataCopy.location = address;
     delete formDataCopy.images;
-    delete formDataCopy.address;
-    !formDataCopy.offer && delete formDataCopy.discountedPrice;
+    // delete formDataCopy.address;
+    // !formDataCopy.offer && delete formDataCopy.discountedPrice;
+
+    console.log(formDataCopy);
 
     const docRef = await addDoc(collection(db, "listings"), formDataCopy);
     setLoading(false);
@@ -203,32 +220,34 @@ const CreateListing = () => {
   return (
     <div className="profile">
       <header>
-        <p className="pageHeader">Create a Listing</p>
+        <p className="pageHeader">Add School Information</p>
       </header>
 
       <main>
-        {/* <form onSubmit={handleSubmit}>
-          <label className="formLabel">Sell / Rent</label>
+        <form onSubmit={handleSubmit}>
+          <label className="formLabel">Category</label>
           <div className="formButtons">
             <button
               type="button"
-              className={type === "sale" ? "formButtonActive" : "formButton"}
+              className={type === "primary" ? "formButtonActive" : "formButton"}
               id="type"
-              value="sale"
+              value="primary"
               onClick={onMutate}
             >
-              Sell
+              Primary
             </button>
             <button
               type="button"
-              className={type === "rent" ? "formButtonActive" : "formButton"}
+              className={
+                type === "secondary" ? "formButtonActive" : "formButton"
+              }
               id="type"
-              value="rent"
+              value="secondary"
               onClick={onMutate}
             >
-              Rent
+              Secondary
             </button>
-          </div> */}
+          </div>
 
           <label className="formLabel">Name</label>
           <input
@@ -238,6 +257,18 @@ const CreateListing = () => {
             value={name}
             onChange={onMutate}
             maxLength="32"
+            minLength="10"
+            required
+          />
+
+          <label className="formLabel">Contact Number</label>
+          <input
+            className="formInputName"
+            type="text"
+            id="contact"
+            value={contact}
+            onChange={onMutate}
+            maxLength="10"
             minLength="10"
             required
           />
@@ -274,9 +305,9 @@ const CreateListing = () => {
           <label className="formLabel">Scholarship</label>
           <div className="formButtons">
             <button
-              className={parking ? "formButtonActive" : "formButton"}
+              className={scholarship ? "formButtonActive" : "formButton"}
               type="button"
-              id="parking"
+              id="scholarship"
               value={true}
               onClick={onMutate}
               min="1"
@@ -286,10 +317,12 @@ const CreateListing = () => {
             </button>
             <button
               className={
-                !parking && parking !== null ? "formButtonActive" : "formButton"
+                !scholarship && scholarship !== null
+                  ? "formButtonActive"
+                  : "formButton"
               }
               type="button"
-              id="parking"
+              id="scholarship"
               value={false}
               onClick={onMutate}
             >
@@ -297,12 +330,31 @@ const CreateListing = () => {
             </button>
           </div>
 
+          {scholarship && (
+            <>
+              <label className="formLabel">Upto</label>
+              <div className="formPriceDiv">
+                <input
+                  className="formInputSmall"
+                  type="number"
+                  id="discount"
+                  value={discount}
+                  onChange={onMutate}
+                  min="5"
+                  max="100"
+                  required
+                />
+                <p className="formPriceText">% Scholarship</p>
+              </div>
+            </>
+          )}
+
           <label className="formLabel">Bus Service</label>
           <div className="formButtons">
             <button
-              className={furnished ? "formButtonActive" : "formButton"}
+              className={busService ? "formButtonActive" : "formButton"}
               type="button"
-              id="furnished"
+              id="busService"
               value={true}
               onClick={onMutate}
             >
@@ -310,12 +362,109 @@ const CreateListing = () => {
             </button>
             <button
               className={
-                !furnished && furnished !== null
+                !busService && busService !== null
                   ? "formButtonActive"
                   : "formButton"
               }
               type="button"
-              id="furnished"
+              id="busService"
+              value={false}
+              onClick={onMutate}
+            >
+              No
+            </button>
+          </div>
+
+          <label className="formLabel">CCTV Available?</label>
+          <div className="formButtons">
+            <button
+              className={cctv ? "formButtonActive" : "formButton"}
+              type="button"
+              id="cctv"
+              value={true}
+              onClick={onMutate}
+            >
+              Yes
+            </button>
+            <button
+              className={
+                !cctv && cctv !== null ? "formButtonActive" : "formButton"
+              }
+              type="button"
+              id="cctv"
+              value={false}
+              onClick={onMutate}
+            >
+              No
+            </button>
+          </div>
+
+          <label className="formLabel">Labs Available?</label>
+          <div className="formButtons">
+            <button
+              className={labs ? "formButtonActive" : "formButton"}
+              type="button"
+              id="labs"
+              value={true}
+              onClick={onMutate}
+            >
+              Yes
+            </button>
+            <button
+              className={
+                !labs && labs !== null ? "formButtonActive" : "formButton"
+              }
+              type="button"
+              id="labs"
+              value={false}
+              onClick={onMutate}
+            >
+              No
+            </button>
+          </div>
+
+          <label className="formLabel">Canteen?</label>
+          <div className="formButtons">
+            <button
+              className={canteen ? "formButtonActive" : "formButton"}
+              type="button"
+              id="canteen"
+              value={true}
+              onClick={onMutate}
+            >
+              Yes
+            </button>
+            <button
+              className={
+                !canteen && canteen !== null ? "formButtonActive" : "formButton"
+              }
+              type="button"
+              id="canteen"
+              value={false}
+              onClick={onMutate}
+            >
+              No
+            </button>
+          </div>
+          <label className="formLabel">Sports Facilities?</label>
+          <div className="formButtons">
+            <button
+              className={sportsFacilities ? "formButtonActive" : "formButton"}
+              type="button"
+              id="sportsFacilities"
+              value={true}
+              onClick={onMutate}
+            >
+              Yes
+            </button>
+            <button
+              className={
+                !sportsFacilities && sportsFacilities !== null
+                  ? "formButtonActive"
+                  : "formButton"
+              }
+              type="button"
+              id="sportsFacilities"
               value={false}
               onClick={onMutate}
             >
@@ -332,7 +481,18 @@ const CreateListing = () => {
             onChange={onMutate}
             required
           />
-          <label className="formLabel">Type</label>
+
+          <label className="formLabel">Brochure</label>
+          <input
+            className="formInputName"
+            type="text"
+            id="brochure"
+            value={brochure}
+            onChange={onMutate}
+            maxLength="9000000"
+            minLength="10"
+          />
+          {/* <label className="formLabel">Type</label>
           <textarea
             className="formInputAddress"
             type="text"
@@ -340,7 +500,7 @@ const CreateListing = () => {
             // value={address}
             onChange={onMutate}
             required
-          />
+          /> */}
 
           {!geolocationEnabled && (
             <div className="formLatLng flex">
@@ -369,7 +529,7 @@ const CreateListing = () => {
             </div>
           )}
 
-          <label className="formLabel">Offer</label>
+          {/* <label className="formLabel">Offer</label>
           <div className="formButtons">
             <button
               className={offer ? "formButtonActive" : "formButton"}
@@ -391,24 +551,9 @@ const CreateListing = () => {
             >
               No
             </button>
-          </div>
-{/* 
-          <label className="formLabel">Regular Price</label>
-          <div className="formPriceDiv">
-            <input
-              className="formInputSmall"
-              type="number"
-              id="regularPrice"
-              value={regularPrice}
-              onChange={onMutate}
-              min="50"
-              max="750000000"
-              required
-            />
-            {type === "rent" && <p className="formPriceText">$ / Month</p>}
           </div> */}
 
-          {offer && (
+          {/* {offer && (
             <>
               <label className="formLabel">Discounted Price</label>
               <input
@@ -422,7 +567,7 @@ const CreateListing = () => {
                 required={offer}
               />
             </>
-          )}
+          )} */}
 
           <label className="formLabel">Images</label>
           <p className="imagesInfo">
@@ -439,9 +584,9 @@ const CreateListing = () => {
             required
           />
           <button type="submit" className="primaryButton createListingButton">
-            Create Listing
+            Add School
           </button>
-        {/* </form> */}
+        </form>
       </main>
     </div>
   );

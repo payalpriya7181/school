@@ -48,8 +48,8 @@ const SignIn = () => {
   return (
     <>
    
-    <img src={photo} alt="img" className="bgin" />
-    <div className="mx-24">
+    {/* <img src={photo} alt="img" className="bgin" /> */}
+    <div className="pageContainer">
         <header>
           <p className="pageHeader">Welcome Back!</p>
         </header>

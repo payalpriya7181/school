@@ -150,7 +150,7 @@ const Profile = () => {
           
           <Link to="/create-listing" className="createListing">
             {/* <img src={homeIcon} alt="home-icon" /> */}
-            <p>School List Create</p>
+            <p>Add your school</p>
             <img src={arrowRight} alt="arrow-right" />
           </Link>
           {!loading && listings.length > 0 && (

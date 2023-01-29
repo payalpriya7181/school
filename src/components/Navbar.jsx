@@ -33,15 +33,18 @@ const Navbar = () => {
               Explore
             </p>
           </li>
-          <li className="navbarListItem" onClick={() => navigate("/offers")}>
+          <li
+            className="navbarListItem"
+            onClick={() => navigate("/scholarship")}
+          >
             <OfferIcon
-              fill={pathMatchRoute("/offers") ? "#2c2c2c" : "#8f8f8f"}
+              fill={pathMatchRoute("/scholarship") ? "#2c2c2c" : "#8f8f8f"}
               width="36px"
               height="36px"
             />
             <p
               className={
-                pathMatchRoute("/offers")
+                pathMatchRoute("/scholarship")
                   ? "navbarListItemNameActive"
                   : "navbarListItemName"
               }

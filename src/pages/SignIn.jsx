@@ -47,11 +47,12 @@ const SignIn = () => {
 
   return (
     <>
-   
+    <div>
     {/* <img src={photo} alt="img" className="bgin" /> */}
+    <div className="pg">
     <div className="pageContainer">
         <header>
-          <p className="pageHeader">Welcome Back!</p>
+          <p className="pageHeader">Sign In </p>
         </header>
 
         <form onSubmit={handleSubmit}
@@ -98,6 +99,8 @@ const SignIn = () => {
         <Link to="/sign-up" className="registerLink">
           Sign Up Instead
         </Link>
+      </div>
+      </div>
       </div>
     </>
   );

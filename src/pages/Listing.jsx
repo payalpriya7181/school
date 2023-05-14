@@ -86,11 +86,12 @@ const Listing = () => {
           Upto {listing.scholarship && listing.discount} Scholarship
         </p>
         {listing.brochure && (
-          <button type="button">
-            <a href={listing.brochure} download={listing.brochure}>
+          <button type="button" className="list">
+            <a href={listing.brochure} download={listing.brochure} className="list">
               School Brochure
-            </a>
+            
             Download
+            </a>
           </button>
         )}
 

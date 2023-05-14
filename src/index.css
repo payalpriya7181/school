@@ -1,6 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;800;900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
+  
 }
 
 html::-webkit-scrollbar {
@@ -9,7 +13,8 @@ html::-webkit-scrollbar {
 
 body {
   font-family: "Montserrat", sans-serif;
-  background-color: #f2f4f8;
+  /* background-color: #f2f4f8; */
+  background-color: rgb(179, 163, 143);
   margin: 0;
   box-sizing: border-box;
 }
@@ -75,14 +80,16 @@ button {
 .removeIcon {
   cursor: pointer;
   position: absolute;
-  top: -3%;
-  right: -2%;
+  top: 6%;
+  right: 1%;
+  background-color: burlywood;
 }
 .editIcon {
   cursor: pointer;
   position: absolute;
-  top: -3.4%;
-  right: 20px;
+  top: 5.6%;
+    right: 50px;
+    background-color: burlywood;
 }
 
 .pageContainer,
@@ -94,8 +101,19 @@ button {
   margin: 1rem;
   /* margin-top: -1280px; */
 }
-.pageContainer{
-  margin-top: -1280px
+/* .pg{
+  margin-top: -157%;
+  margin: 16rem;
+} */
+.list{
+  padding: 0.25rem 0.5rem;
+    background-color: blueviolet;
+    color: #ffffff;
+    border-radius: 2rem;
+    display: inline;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-right: 1rem;
 }
 @media (min-width: 1024px) {
   .pageContainer,
@@ -156,6 +174,7 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: antiquewhite;
 }
 
 .navbarNav {
@@ -405,6 +424,7 @@ button {
 
 .categoryListings {
   padding: 0;
+  background-color: rgb(218, 218, 199);
 }
 
 .categoryListing {
@@ -413,6 +433,9 @@ button {
   align-items: center;
   margin-bottom: 1rem;
   position: relative;
+  /* background-color: rgb(179, 163, 143); */
+  border-radius: 8px;
+  background-color: cornsilk;
 }
 
 .categoryListingLink {
@@ -424,6 +447,7 @@ button {
   height: 100px;
   border-radius: 1.5rem;
   object-fit: cover;
+  margin-left: 10px;
 }
 @media (min-width: 1024px) {
   .categoryListingImg {
@@ -632,7 +656,7 @@ button {
   font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: blueviolet;
+  background-color: rgb(84, 49, 2);
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
 }
@@ -659,6 +683,7 @@ button {
   padding: 1rem;
   box-shadow: rgba(0, 0, 0, 0.2);
   max-width: 500px;
+  background-color: beige;
 }
 
 .profileDetails {
@@ -706,6 +731,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-color: beige;
 }
 
 .listingText {

@@ -64,7 +64,7 @@ const SignUp = () => {
     <>
       <div className="pageContainer">
         <header>
-          <p className="pageHeader">Welcome Back!</p>
+          <p className="pageHeader">Sign Up</p>
         </header>
 
         <form onSubmit={handleSubmit}>

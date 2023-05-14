@@ -14,6 +14,7 @@ const Navbar = () => {
   };
 
   return (
+    
     <footer className="navbar">
       <nav className="navbarNav">
         <ul className="navbarListItems">

@@ -24,7 +24,7 @@ function App() {
           <Route path="/scholarship" element={<Offers />} />
           <Route path="/category/:categoryName" element={<Category />} />
           <Route path="/profile" element={<PrivateRoute />}>
-            <Route path="/profile" element={<Profile />}></Route>
+          <Route path="/profile" element={<Profile />}></Route>
           </Route>
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
